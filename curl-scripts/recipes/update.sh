@@ -11,3 +11,5 @@ curl --include --request PATCH "http://localhost:4741/recipes/${ID}" \
       "notes": "'"${NOTES}"'"
     }
   }'
+
+  echo
