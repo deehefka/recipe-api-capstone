@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-class RecipesController < OpenReadController
+class RecipesController < ProtectedController
   before_action :set_recipe, only: %i[show update destroy]
-  skip_before_action :verify_authenticity_token
 
   # GET /recipes
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.recipes
 
     render json: @recipes
   end
@@ -18,7 +17,7 @@ class RecipesController < OpenReadController
 
   # POST /recipes
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
       render json: @recipe, status: :created, location: @recipe
