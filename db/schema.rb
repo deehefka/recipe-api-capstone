@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2019_01_15_190947) do
     t.datetime "updated_at", null: false
     t.text "ingredient_list"
     t.text "instruction_list"
-    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,5 +45,4 @@ ActiveRecord::Schema.define(version: 2019_01_15_190947) do
   end
 
   add_foreign_key "examples", "users"
-  add_foreign_key "recipes", "users"
 end

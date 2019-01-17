@@ -2,6 +2,7 @@
 
 class RecipesController < OpenReadController
   before_action :set_recipe, only: %i[show update destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /recipes
   def index
