@@ -8,7 +8,9 @@ curl --include --request PATCH "http://localhost:4741/recipes/${ID}" \
     "recipe": {
       "title": "'"${TITLE}"'",
       "description": "'"${DESCRIPTION}"'",
-      "notes": "'"${NOTES}"'"
+      "notes": "'"${NOTES}"'",
+      "ingredient_list": "'"${INGREDIENT_LIST}"'",
+      "instruction_list": "'"${INSTRUCTION_LIST}"'"
     }
   }'
 

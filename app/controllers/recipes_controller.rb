@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RecipesController < ApplicationController
+class RecipesController < OpenReadController
   before_action :set_recipe, only: %i[show update destroy]
 
   # GET /recipes
@@ -40,15 +40,15 @@ class RecipesController < ApplicationController
     @recipe.destroy
   end
 
-  private
+# Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = current_user.recipes.find(params[:id])
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
+# Only allow a trusted parameter "white list" through.
+  def recipe_params
+    params.require(:recipe).permit(:title, :description, :notes, :user_id, :ingredient_list, :instruction_list)
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def recipe_params
-      params.require(:recipe).permit(:title, :description, :notes)
-    end
+  private :set_recipe, :recipe_params
 end

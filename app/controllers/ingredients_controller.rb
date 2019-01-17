@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class IngredientsController < ApplicationController
+class IngredientsController < ProtectedController
   before_action :set_ingredient, only: %i[show updaten destroy]
 
   # GET /ingredients
@@ -17,7 +17,7 @@ class IngredientsController < ApplicationController
 
   # POST /ingredients
   def create
-    @ingredient = Ingredient.new(ingredient_params)
+    @ingredient = current_user.ingredients.new(ingredient_params)
 
     if @ingredient.save
       render json: @ingredient, status: :created, location: @ingredient
@@ -43,7 +43,7 @@ class IngredientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ingredient
-      @ingredient = Ingredient.find(params[:id])
+      @ingredient = current_user.ingredients.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

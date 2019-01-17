@@ -7,7 +7,9 @@ curl --include --request POST "http://localhost:4741/recipes" \
     "recipe": {
       "title": "'"${TITLE}"'",
       "description": "'"${DESCRIPTION}"'",
-      "notes": "'"${NOTES}"'"
+      "notes": "'"${NOTES}"'",
+      "ingredient_list": "'"${INGREDIENT_LIST}"'",
+      "instruction_list": "'"${INSTRUCTION_LIST}"'"
     }
   }'
 

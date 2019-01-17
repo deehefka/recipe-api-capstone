@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InstructionsController < ApplicationController
+class InstructionsController < ProtectedController
   before_action :set_instruction, only: %i[show update destroy]
 
   # GET /instructions
@@ -17,7 +17,7 @@ class InstructionsController < ApplicationController
 
   # POST /instructions
   def create
-    @instruction = Instruction.new(instruction_params)
+    @instruction = current_user.instructions.new(instruction_params)
 
     if @instruction.save
       render json: @instruction, status: :created, location: @instruction
@@ -43,7 +43,7 @@ class InstructionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_instruction
-      @instruction = Instruction.find(params[:id])
+      @instruction = current_user.instructions.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
