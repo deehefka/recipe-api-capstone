@@ -5,6 +5,7 @@ Recipe Cards
 
 Back End Website - https://thawing-castle-95431.herokuapp.com/
 Front End Website - https://deehefka.github.io/recipe-client-capstone/
+Front end Repo - https://github.com/deehefka/recipe-client-capstone
 
 Recipe Cards Capstone
 
